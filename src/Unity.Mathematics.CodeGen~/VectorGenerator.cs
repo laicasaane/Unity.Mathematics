@@ -262,6 +262,8 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                         continue;
 
                     vectorGenerator.WriteType("bool", rows, columns, Features.BitwiseLogic);
+                    vectorGenerator.WriteType("short", rows, columns, Features.All);
+                    vectorGenerator.WriteType("ushort", rows, columns, Features.All);
                     vectorGenerator.WriteType("int", rows, columns, Features.All);
                     vectorGenerator.WriteType("uint", rows, columns, Features.All);
                     vectorGenerator.WriteType("float", rows, columns, Features.Arithmetic | Features.UnaryNegation);
@@ -840,6 +842,8 @@ namespace Unity.Mathematics.Mathematics.CodeGen
             GenerateMulImplementations("double", str);
             GenerateMulImplementations("int", str);
             GenerateMulImplementations("uint", str);
+            GenerateMulImplementations("short", str);
+            GenerateMulImplementations("ushort", str);
 
             str.Append("\t}\n");
             str.Append("}\n");
