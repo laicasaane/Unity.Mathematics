@@ -188,21 +188,20 @@ namespace Unity.Mathematics.Mathematics.CodeGen
             text = text.Replace("\t", "    ");
             // Normalize line endings, convert all EOL to platform EOL (and let git handle it)
             text = text.Replace("\r\n", "\n");
-            text = text.Replace("\n", Environment.NewLine);
 
             // Generate auto generated comment
             text = s_AutoGenHeader + text;
 
             // Trim trailing spaces that could have come from code gen.
             char[] trim = { ' ' };
-            var lines = text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            var lines = text.Split(new string[] { "\n" }, StringSplitOptions.None);
 
             for (int i = 0; i < lines.Length; ++i)
             {
                 lines[i] = lines[i].TrimEnd(trim);
             }
 
-            text = string.Join(Environment.NewLine, lines);
+            text = string.Join("\n", lines);
 
             System.IO.File.WriteAllText(filename, text);
         }
